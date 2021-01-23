@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <link rel="stylesheet" href="Styles.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="IndexJS.js" defer></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Mukta+Vaani&display=swap" rel="stylesheet">
+    <title>
+        Frontend
+    </title>
+</head>
+<body>
+    <h3 class="titulo1">CARD ESTATICA DE DEMOSTRACIÓN</h3>
+    <section id="PostContainers">
+        <div class="postContent">
+            <div class="row">
+                <div class="col-lg-5 divTitulo">
+                    <p class="tituloPost">{{tituloPost}}</p>
+                </div>
+                <div class="col-lg-5 divID">
+                    <h3 class="UserPost">{{usuario}}</h3>
+                </div>
+                <div class="col-lg-2 divImg">
+                    <img class="fluid rounded-circle profilePicture" src="IMG/1.jpg">
+                </div>
+            </div>
+            <hr class="divisor">
+            <div class="col-lg-12 divBody">
+                <p>{{mensaje}}</p>
+            </div>
+            <hr class="divisor">
+            <section id="postComentario">
+            <div class="row">
+                <div class="col-lg-2 Divcomentario">
+                    <img class="fluid profilePictureComentario" src="IMG/2.png" alt="">
+                </div>
+                <div class="col-lg-7">
+                    <textarea class="form-control cajaComentario"></textarea>
+                </div>
+                <div class="col-lg-3-md-2 divEnviar">
+                    <button class="btn btn-info botonEnviar" type="submit"> Enviar comentario</button>
+                </div>
+            </div> 
+            </section> 
+            <p><br></p>
+        <section id="comentario">   
+        <div class="areaComentarios">
+            <div class="row">
+                <div class="col-lg-2 Divcomentario">
+                    <img class="fluid profilePictureComentario" src="IMG/3.jpg" alt="">
+                    <figcaption class="nombreUsuarioComentario">Usuario 1223</figcaption>
+                </div>
+                <div contenteditable="false" class="col-lg-8 Textocomentario">
+                    Esperé una hora, aunque llegué a tiempo, y como resultado, fui recibido por otro médico, no al que estaba registrada, además presionan a los clientes a comprar los productos que se venden en la clínica.
+                </div>
+                <div class="col-lg-2">
+                    <img class="fluid iconoEdit" src="IMG/edit.png" alt="">
+                    <img class="fluid iconoDelete" src="IMG/delete.png" alt="">
+                </div>
+            </div>
+        </div>
+    </section>  
+        </div>
+    </section>
+    <h3 class="titulo1">FEED CON FUNCIONALIDAD</h3>
+    <section id="PostApi">
+        <div v-for="Post in post" :key="post.id" class="postContent">
+            <div class="row">
+                <div class="col-lg-5 divTitulo">
+                    <p class="tituloPost">{{Post.title}}</p>
+                </div>
+                <div class="col-lg-5 divID">
+                    <h3 class="UserPost">{{Post.name}}</h3>
+                </div>
+                <div class="col-lg-2 divImg">
+                    <img class="fluid rounded-circle profilePicture" src="IMG/1.jpg">
+                </div>
+            </div>
+            <hr class="divisor">
+            <div class="col-lg-12 divBody">
+                <p>{{Post.body}}</p>
+            </div>
+            <hr class="divisor">
+            <section id="postComentario">
+            <div class="row">
+                <div class="col-lg-2 Divcomentario">
+                    <img class="fluid profilePictureComentario" src="IMG/2.png" alt="">
+                </div>
+                <div class="col-lg-7">
+                    <textarea v-on:keyUp="ajustarCajaTexto($event)" :id="'nuevoComentario-'+Post.id" class="form-control cajaComentario"></textarea>
+                </div>
+                <div class="col-lg-3-md-2 divEnviar">
+                    <button v-on:click="postComentario(Post.id)" class="btn btn-info botonEnviar" type="submit"> Enviar comentario</button>
+                </div>
+            </div> 
+            </section> 
+            <p><br></p> 
+        <div class="areaComentarios">
+            <div v-for="comments in Post.comentarios" key="comments.id" class="areaComentarios">
+                <div v-if="comments.email == 'test@gmail.com'" class="row">
+                    <div class="col-lg-2 Divcomentario">
+                        <img  class="fluid profilePictureComentario" src="IMG/2.png" alt="">
+                        <figcaption class="nombreUsuarioComentario">Rebbeca C.</figcaption>
+                    </div>
+                    <div contenteditable="false" :id="'comentario-'+comments.id" readonly="true" class="col-lg-8 Textocomentario">
+                        {{comments.body}}
+                    </div>
+                    <div class="col-lg-2">
+                        <img :id="'editarComentario-'+comments.id+'-1'" v-on:click="putComentario($event,comments)" class="fluid iconoEdit" src="IMG/edit.png" alt="">
+                        <img v-on:click="deleteCommentario(Post.id,comments.id)" class="fluid iconoDelete" src="IMG/delete.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div v-for="comments in Post.comentarios" key="comments.id" class="areaComentarios">
+                <div v-if="comments.email != 'test@gmail.com'" class="row">
+                    <div class="col-lg-2 Divcomentario">
+                        <img  class="fluid profilePictureComentario" src="IMG/3.jpg" alt="">
+                        <figcaption class="nombreUsuarioComentario">Ernesto M.</figcaption>
+                    </div>
+                    <div contenteditable="false" :id="'comentario-'+comments.id" readonly="true" class="col-lg-8 Textocomentario">
+                        {{comments.body}}
+                    </div>
+                    <div class="col-lg-2">
+                        <img :id="'editarComentario-'+comments.id+'-1'" v-on:click="putComentario($event,comments)" class="fluid iconoEdit" src="IMG/edit.png" alt="">
+                        <img v-on:click="deleteCommentario(Post.id,comments.id)" class="fluid iconoDelete" src="IMG/delete.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="divBtnVerTodos">
+            <a id="1" v-on:click="rerender($event,Post.id)" class="botonVerTodos">Ver todos los comentarios</a>
+        </div> 
+        </div>
+    </section>
+</body>
+</html>
