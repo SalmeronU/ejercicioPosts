@@ -1,0 +1,137 @@
+body{
+    font-family: 'Mukta Vaani', sans-serif;
+    background-color: #d4d4d4;
+
+}
+.postContent{
+    background-color: rgb(51, 51, 51);
+    height: min-content;
+    width: 40%;
+    margin-left: 30%;
+    margin-bottom: 0.5%;
+    border-radius: 10px;
+}
+
+.tituloPost{
+    color: rgb(231, 231, 231);
+    font-size: 120%;
+}
+
+.UserPost{
+    color: rgb(231, 231, 231);
+}
+
+.divTitulo{
+    padding-left: 7%;
+    padding-top: 4%;
+    font-weight: bold;
+}
+
+.divID{
+    padding-top: 1%;
+    padding-left: 9.4%;
+    text-align: right;
+}
+
+.divBody{
+    color:  rgb(231, 231, 231);
+    padding-left: 6%;
+    padding-right: 9%;
+}
+
+.divImg{
+    padding-top: 1.5%;
+    padding-right: 1%;
+}
+
+.profilePicture{
+    height: 50%;
+    width: 50%;
+    border-radius: 50%;
+}
+
+.profilePictureComentario{
+    height: 90%;
+    width: 90%;
+    border-radius: 50%;
+}
+
+.divisor{
+    width: 70%;
+    opacity: 30%;
+}
+
+.Divcomentario{
+    padding-left: 7%;;
+}
+
+.divEnviar{
+    padding-top: 1.2%;
+}
+
+.cajaComentario{
+    background-color: rgb(19, 19, 19);
+    color: aliceblue;
+    height: min-content;
+    resize: none;
+    overflow: hidden;
+}
+
+.botonEnviar{
+    font-weight: bolder;
+    width: 22%;
+}
+
+.areaComentarios{
+    height: min-content;
+    background-color: rgb(90, 90, 90);
+    padding-right: 1%;
+    color: aliceblue;
+    padding-top: 1%;
+    border-radius: 10px;
+}
+
+.nombreUsuarioComentario{
+    font-size: 10px;
+    padding-right: 0.6%;
+    color: rgb(220, 226, 236);
+}
+
+.divBtnVerTodos{
+    padding-left: 40%;
+}
+
+.iconoDelete{
+    padding-top: 15%;
+    height: 30%;
+    width: 30%;
+}
+
+.iconoDelete:hover{
+    padding-top: 15%;
+    height: 50%;
+    width: 50%;
+}
+
+.iconoEdit{
+    padding-top: 15%;
+    height: 25%;
+    width: 25%;
+}
+
+.iconoEdit:hover{
+    padding-top: 15%;
+    height: 35%;
+    width: 35%;
+}
+
+.Textocomentario{
+    background: rgb(90, 90, 90);
+    border-radius: 5px;
+    resize: none;
+    border: none;
+    outline: none;
+}
+.titulo1{
+   text-align: center;
+}
